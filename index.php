@@ -1,6 +1,7 @@
 <?php
 
 use Core\Router;
+use Core\Template;
 
 function autoload($class_name){
     $path = str_replace( '\\', '/', $class_name.'.php');
@@ -16,5 +17,7 @@ if(isset($_GET['route'])){
 } else {
     $route = '';
 }
+
 $router = new core\Router($route);
 $router -> run();
+$router -> done();

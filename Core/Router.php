@@ -5,8 +5,10 @@ namespace Core;
 class Router
 {
     protected $route;
+    protected $index_teamplate;
     public function __construct($route){
         $this->route = $route;
+        $this -> index_teamplate = new Template('views/layouts/index.php');
     }
 
     public function run(){
@@ -24,13 +26,19 @@ class Router
         if(class_exists($controller)){
             $controllerObject = new $controller();
             if(method_exists($controller, $method)){
-                $controllerObject->$method();
+                array_splice($parts, 0, 2);
+                $params = $controllerObject->$method($parts);
+                $this -> index_teamplate -> set_params($params);
             } else{
                 $this -> error(404);
             }
         } else{
             $this->error(404);
         }
+    }
+
+    public function done(){
+       $this -> index_teamplate -> dispaly();
     }
 
     public function error($code){
