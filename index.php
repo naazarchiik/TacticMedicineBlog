@@ -1,5 +1,6 @@
 <?php
 
+use Core\Core;
 use Core\Router;
 use Core\Template;
 
@@ -17,7 +18,6 @@ if(isset($_GET['route'])){
 } else {
     $route = '';
 }
-
-$router = new core\Router($route);
-$router -> run();
-$router -> done();
+$core = Core::get();
+$core -> run($route);
+$core -> done();

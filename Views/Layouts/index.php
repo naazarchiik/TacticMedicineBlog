@@ -1,3 +1,10 @@
+<?php
+/** @var string $title */
+/** @var string $content */
+if(empty($title)){
+    $title = '';
+}
+?>
 <!doctype html>
 <html lang="uk">
 <head>
@@ -15,7 +22,7 @@
 </div>
 <div>
     <main>
-        <h1>Content</h1>
+        <h2>Content generated below:</h2>
         <?=$content ?>
     </main>
 </div>

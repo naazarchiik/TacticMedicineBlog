@@ -3,28 +3,32 @@
 namespace Controllers;
 
 use Core\Template;
+use Core\Controller;
 
-class PostController
+class PostController extends Controller
 {
     public function action_add(){
-        $template = new Template('views/post/add.php');
+        /*$this -> template -> set_template_file_path('views/post/add.php');
         return [
-            'content' => $template -> get_html(),
+            'content' => $this -> template -> get_html(),
             'title' => 'Додавання посту до блогу'
-        ];
+        ];*/
+        return $this -> render();
     }
 
     public function action_index(){
-        return [
-            'content' => 'index Action',
+        /*return [
+            'content' => $this -> template -> get_html(),
             'title' => 'Список постів'
-        ];
+        ];*/
+        return $this -> render(); 
     }
 
     public function action_view($params){
-        return [
+        /*return [
             'content' => 'view Action',
             'title' => 'Перегляд поста'
-        ];
+        ];*/
+        return $this -> render();
     }
 }
