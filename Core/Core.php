@@ -10,6 +10,7 @@ class Core
     public $router;
     public $template;
     public $db;
+    public $session;
     private static $instance;
 
     private function __construct()
@@ -20,13 +21,17 @@ class Core
         $login = Config::get()->dbLogin;
         $password = Config::get()->dbPassword;
         $this->db = new DB($host, $dbname, $login, $password);
+        $this->session = new Session();
+        session_start();
     }
 
     public function run($route)
     {
         $this->router = new Router($route);
         $params = $this->router->run();
-        $this->template->set_params($params);
+        if (!empty($params)) {
+            $this->template->set_params($params);
+        }
     }
 
     public function done()

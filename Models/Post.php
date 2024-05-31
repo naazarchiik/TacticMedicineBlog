@@ -16,5 +16,5 @@ use Core\Model;
  */
 class Post extends Model
 {
-    public $table = 'post';
+    public static $table_name = 'post';
 }
