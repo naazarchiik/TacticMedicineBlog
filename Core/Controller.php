@@ -8,15 +8,16 @@ class Controller
 
     public function __construct()
     {
-        $action = Core::get() -> action_name;
-        $module = Core::get() -> module_name;
+        $action = Core::get()->action_name;
+        $module = Core::get()->module_name;
         $path = "Views/$module/$action.php";
-        $this -> template = new Template($path);
+        $this->template = new Template($path);
     }
 
-    public function render(){
+    public function render()
+    {
         return [
-            'content' => $this -> template -> get_html(),
+            'content' => $this->template->get_html(),
         ];
     }
 }

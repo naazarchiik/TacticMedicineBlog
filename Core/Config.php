@@ -12,23 +12,23 @@ class Config
         /** @var array $Config */
         $directory = 'Config';
         $config_files = scandir($directory);
-        foreach($config_files as $config_file){
-            if(substr($config_file, -4) == '.php'){
+        foreach ($config_files as $config_file) {
+            if (substr($config_file, -4) == '.php') {
                 $path = $directory . '/' . $config_file;
                 include $path;
             }
         }
-        $this -> params = [];
-        foreach($Config as $config){
-            foreach($config as $key => $value){
-                $this -> $key = $value;
+        $this->params = [];
+        foreach ($Config as $config) {
+            foreach ($config as $key => $value) {
+                $this->$key = $value;
             }
-        }    
-    }   
+        }
+    }
 
     public static function get()
     {
-        if(empty(self::$instance)){
+        if (empty(self::$instance)) {
             self::$instance = new self();
         }
         return self::$instance;
@@ -36,11 +36,11 @@ class Config
 
     public function __set($name, $value)
     {
-        $this -> params[$name] = $value;
+        $this->params[$name] = $value;
     }
 
     public function __get($name)
     {
-        return $this -> params[$name];
+        return $this->params[$name];
     }
 }
