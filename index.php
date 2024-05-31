@@ -3,6 +3,7 @@
 use Core\Core;
 use Core\Router;
 use Core\Template;
+use Core\Config;
 
 function autoload($class_name){
     $path = str_replace( '\\', '/', $class_name.'.php');
