@@ -5,6 +5,7 @@ namespace Core;
 class Controller
 {
     protected Template $template;
+    protected $error_massages;
     public $is_post = false;
     public $is_get = false;
     public $post;
@@ -26,6 +27,7 @@ class Controller
         }
         $this->post = new Post();
         $this->get = new Get();
+        $this->error_massages = [];
     }
 
     public function render($path_to_view = null)
@@ -42,5 +44,22 @@ class Controller
     {
         header("Location: $path");
         die;
+    }
+
+    public function add_error_massege($message = null)
+    {
+        $this->error_massages[] = $message;
+        $this->template->set_param('error_massage', implode('<br/>', $this->error_massages));
+    }
+
+    public function clear_error_massege()
+    {
+        $this->$this->error_massages = [];
+        $this->template->set_param('error_massage', null);
+    }
+
+    public function is_error_massage_exist()
+    {
+        return count($this->error_massages) > 0;
     }
 }

@@ -1,4 +1,6 @@
 <?php
+
+/** @var string $error_massage Повідомлення про помилку */
 $this->title = "Вхід на сайт";
 ?>
 <form method="post" action="">
