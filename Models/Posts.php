@@ -14,7 +14,7 @@ use Core\Model;
  * @property string $visibility Видимість посту
  * @property string $topic Тема посту
  */
-class Post extends Model
+class Posts extends Model
 {
-    public static $table_name = 'post';
+    public static $table_name = 'posts';
 }

@@ -21,8 +21,7 @@ class UsersController extends Controller
                 Users::login_user($user);
                 return $this->redirect('/');
             } else
-                $error_massage = 'Невірний логін або пароль';
-            $this->template->set_param('error_massage', $error_massage);
+                $this->template->set_param('error_massage', 'Невірний логін або пароль');
         }
         return $this->render();
     }

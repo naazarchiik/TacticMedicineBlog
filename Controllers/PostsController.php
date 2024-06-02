@@ -5,9 +5,9 @@ namespace Controllers;
 use Core\Template;
 use Core\Controller;
 use Core\Core;
-use Models\Post;
+use Models\Posts;
 
-class PostController extends Controller
+class PostsController extends Controller
 {
     public function action_add()
     {
@@ -16,7 +16,7 @@ class PostController extends Controller
 
     public function action_index()
     {
-        return $this->render('views/post/view.php');
+        return $this->render();
     }
 
     public function action_view($params)
