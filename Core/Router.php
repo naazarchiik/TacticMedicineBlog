@@ -2,6 +2,8 @@
 
 namespace Core;
 
+use Controllers\SiteController;
+
 class Router
 {
     protected $route;

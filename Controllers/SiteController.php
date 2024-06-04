@@ -14,7 +14,6 @@ class SiteController extends Controller
 
     public function action_error($code): array
     {
-        //echo 'Error ' . $code;
         return $this->render();
     }
 }

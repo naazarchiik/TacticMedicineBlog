@@ -87,4 +87,13 @@ class Model
             );
         }
     }
+
+    public static function array_to_object(array $array, string $className)
+    {
+        $object = new $className();
+        foreach ($array as $key => $value) {
+            $object->$key = $value;
+        }
+        return $object;
+    }
 }

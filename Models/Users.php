@@ -83,7 +83,7 @@ class Users extends Model
         $is_admin = isset($admin) ? 1 : 0;
         $is_publisher = isset($publisher) ? 1 : 0;
 
-        $user = self::array_to_object(Users::find_by_id($user_id), self::class);
+        $user = self::array_to_object(self::find_by_id($user_id), self::class);
         if ($user) {
             $user->is_admin = $is_admin;
             $user->is_publisher = $is_publisher;
@@ -104,14 +104,5 @@ class Users extends Model
         } else {
             return false;
         }
-    }
-
-    private static function array_to_object(array $array, string $className)
-    {
-        $object = new $className();
-        foreach ($array as $key => $value) {
-            $object->$key = $value;
-        }
-        return $object;
     }
 }
