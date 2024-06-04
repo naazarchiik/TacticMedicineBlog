@@ -23,19 +23,19 @@ class Model
     }
 
 
-    public static function delete_by_id($id)
+    public static function delete_by_id($id): void
     {
         Core::get()->db->delete(static::$table_name, [static::$primary_key => $id]);
     }
 
-    public static function delete_by_condition($condition_accos_array)
+    public static function delete_by_condition($condition_accos_array): void
     {
         Core::get()->db->delete(static::$table_name, $condition_accos_array);
     }
 
-    public static function find_all()
+    public static function find_all(): false|array|null
     {
-        $arr = Core::get()->db->select(static::$table_name, '*');
+        $arr = Core::get()->db->select(static::$table_name);
         if (count($arr) > 0) {
             return $arr;
         } else {
@@ -53,7 +53,7 @@ class Model
         }
     }
 
-    public static function find_by_condition($condition_accos_array)
+    public static function find_by_condition($condition_accos_array): false|array|null
     {
         $arr = Core::get()->db->select(static::$table_name, '*', $condition_accos_array);
         if (count($arr) > 0) {
@@ -63,7 +63,7 @@ class Model
         }
     }
 
-    public function save()
+    public function save(): void
     {
         $is_insert = false;
         if ($this->{static::$primary_key} === null) {

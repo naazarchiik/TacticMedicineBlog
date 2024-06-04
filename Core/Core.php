@@ -4,7 +4,7 @@ namespace Core;
 
 class Core
 {
-    public $defaullt_layout_path = 'views/layouts/index.php';
+    public $default_layout_path = 'views/layouts/index.php';
     public $module_name;
     public $action_name;
     public $router;
@@ -16,7 +16,7 @@ class Core
 
     private function __construct()
     {
-        $this->template = new Template($this->defaullt_layout_path);
+        $this->template = new Template($this->default_layout_path);
         $host = Config::get()->dbHost;
         $dbname = Config::get()->dbName;
         $login = Config::get()->dbLogin;
@@ -26,7 +26,7 @@ class Core
         session_start();
     }
 
-    public function run($route)
+    public function run($route): void
     {
         $this->router = new Router($route);
         $params = $this->router->run();
@@ -35,13 +35,13 @@ class Core
         }
     }
 
-    public function done()
+    public function done(): void
     {
         $this->template->display();
         $this->router->done();
     }
 
-    public static function get()
+    public static function get(): Core
     {
         if (empty(self::$instance)) {
             self::$instance = new self();

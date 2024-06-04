@@ -8,12 +8,12 @@ use Core\Core;
 
 class UsersController extends Controller
 {
-    public function action_index()
+    public function action_index(): void
     {
         echo 'UsersController -> action_index()';
     }
 
-    public function action_login()
+    public function action_login(): ?array
     {
         if (Users::is_user_logged()) {
             return $this->redirect('/');
@@ -25,37 +25,37 @@ class UsersController extends Controller
                 Users::login_user($user);
                 return $this->redirect('/');
             } else {
-                $this->add_error_massege('Невірний логін та/або пароль');
+                $this->add_error_message('Невірний логін та/або пароль');
             }
         }
         return $this->render();
     }
 
-    public function action_register()
+    public function action_register(): ?array
     {
         if ($this->is_post) {
             $user = Users::find_by_login($this->post->login);
             if (!empty($user)) {
-                $this->add_error_massege('Користувач з таким логіном вже існує');
+                $this->add_error_message('Користувач з таким логіном вже існує');
             }
 
             $firstname = $this->post->firstname;
             $lastname = $this->post->lastname;
 
             if (strlen($this->post->login) === 0) {
-                $this->add_error_massege('Введіть логін');
+                $this->add_error_message('Введіть логін');
             }
             if (strlen($this->post->password) === 0) {
-                $this->add_error_massege('Введіть пароль');
+                $this->add_error_message('Введіть пароль');
             }
             if ($this->post->password != $this->post->password2) {
-                $this->add_error_massege('Паролі не співпадають');
+                $this->add_error_message('Паролі не співпадають');
             }
             if (strlen($firstname) === 0) {
-                $this->add_error_massege('Введіть ім\'я');
+                $this->add_error_message('Введіть ім\'я');
             }
             if (strlen($lastname) === 0) {
-                $this->add_error_massege('Введіть прізвище');
+                $this->add_error_message('Введіть прізвище');
             }
             if (!$this->is_error_massage_exist()) {
                 Users::register_user(
@@ -71,18 +71,18 @@ class UsersController extends Controller
         return $this->render();
     }
 
-    public function action_registersuccess()
+    public function action_registersuccess(): array
     {
         return $this->render();
     }
 
-    public function action_logout()
+    public function action_logout(): void
     {
         Users::logout_user();
-        return $this->redirect('/users/login');
+        $this->redirect('/users/login');
     }
 
-    public function action_administration()
+    public function action_administration(): ?array
     {
         if (!Users::is_admin()) {
             return $this->redirect('/');
@@ -90,7 +90,7 @@ class UsersController extends Controller
 
         if ($this->is_post) {
 
-            Users::update_user_permision(
+            Users::update_user_permission(
                 $this->post->user_id,
                 $this->post->is_admin,
                 $this->post->is_publisher

@@ -57,6 +57,9 @@ if (empty($content)) {
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
+                                <?php if (Users::is_admin()) : ?>
+                                    <li><a class="dropdown-item" href="/users/administration">Administration</a></li>
+                                <?php endif; ?>
                                 <li><a class="dropdown-item" href="/users/logout">Log out</a></li>
                             </ul>
                         </div>

@@ -30,7 +30,7 @@ class Controller
         $this->error_massages = [];
     }
 
-    public function render($path_to_view = null)
+    public function render($path_to_view = null): array
     {
         if (!empty($path_to_view)) {
             $this->template->set_template_file_path($path_to_view);
@@ -40,25 +40,25 @@ class Controller
         ];
     }
 
-    public function redirect($path)
+    public function redirect($path): void
     {
         header("Location: $path");
         die;
     }
 
-    public function add_error_massege($message = null)
+    public function add_error_message($message = null): void
     {
         $this->error_massages[] = $message;
         $this->template->set_param('error_massage', implode('<br/>', $this->error_massages));
     }
 
-    public function clear_error_massege()
+    public function clear_error_message(): void
     {
         $this->$this->error_massages = [];
         $this->template->set_param('error_massage', null);
     }
 
-    public function is_error_massage_exist()
+    public function is_error_massage_exist(): bool
     {
         return count($this->error_massages) > 0;
     }
