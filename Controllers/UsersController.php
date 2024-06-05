@@ -20,7 +20,7 @@ class UsersController extends Controller
         }
 
         if ($this->is_post) {
-            $user = Users::find_by_login_password($this->post->login, $this->post->password);
+            $user = Users::find_by_login_password($this->post->login, Users::hash_password($this->post->password));
             if (!empty($user)) {
                 Users::login_user($user);
                 return $this->redirect('/');
@@ -60,7 +60,7 @@ class UsersController extends Controller
             if (!$this->is_error_massage_exist()) {
                 Users::register_user(
                     $this->post->login,
-                    $this->post->password,
+                    Users::hash_password($this->post->password),
                     $this->post->firstname,
                     $this->post->lastname
                 );

@@ -46,6 +46,11 @@ class Controller
         die;
     }
 
+    public function error($code, $message = null): Error
+    {
+        return new Error($code, $message);
+    }
+
     public function add_error_message($message = null): void
     {
         $this->error_massages[] = $message;
