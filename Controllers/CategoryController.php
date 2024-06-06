@@ -31,7 +31,6 @@ class CategoryController extends Controller
             if (strlen($this->post->name) === 0) {
                 $this->add_error_message('Введіть назву');
             }
-
             if ($file['size'] > $maxSize) {
                 $this->add_error_message('Файл перевищує максимальний розмір у 8MB');
             }

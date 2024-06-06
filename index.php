@@ -5,6 +5,8 @@ use Core\Router;
 use Core\Template;
 use Core\Config;
 
+date_default_timezone_set('Europe/Kiev');
+
 function autoload($class_name){
     $path = str_replace( '\\', '/', $class_name.'.php');
 
