@@ -4,6 +4,7 @@ namespace Controllers;
 
 use Core\Controller;
 use Models\Category;
+use Models\Posts;
 use Models\Users;
 
 class CategoryController extends Controller
@@ -13,8 +14,19 @@ class CategoryController extends Controller
         return $this->render();
     }
 
-    public function action_view($params): array
+    public function action_view($params)
     {
+        $id = intval($params[0]);
+        $this->template->set_param('id', $id);
+
+        if(empty(Category::find_category_by_id($id))) {
+            return $this->redirect('/category/index');
+        }
+        if(empty(Posts::find_posts_by_category($id))) {
+            return $this->redirect('/site/error404');
+        }
+    
+
         return $this->render();
     }
 

@@ -8,8 +8,6 @@ $categories = Category::find_all_categories();
 $path = 'Uploads\\Category\\';
 ?>
 
-
-
 <div class="container">
     <div class="row justify-content-center">
         <?php foreach ($categories as $category) : ?>
