@@ -14,6 +14,7 @@ use Core\Model;
  * @property int $author_id Автор посту
  * @property int $category_id Тема посту
  */
+
 class Posts extends Model
 {
     public static $table_name = 'posts';
@@ -28,7 +29,7 @@ class Posts extends Model
         }
     }
     
-    public static function find_all_posts()
+    public static function find_all_posts(): ?array
     {
         $rows = self::find_all();
         if  (!empty($rows)) {
@@ -41,7 +42,7 @@ class Posts extends Model
         }
     }
 
-    public static function add_post($title, $text, $date, $visibility, $author_id, $category_id, $short_text = null)
+    public static function add_post($title, $text, $date, $visibility, $author_id, $category_id, $short_text = null): void
     {
         $posts = new Posts();
         $posts->title = $title;
@@ -54,12 +55,12 @@ class Posts extends Model
         $posts->save();
     }
 
-    public static function delete_posts($id)
+    public static function delete_posts($id): void
     {
         self::delete_by_id($id);
     }
 
-    public static function update_post($id, $title, $text, $short_text, $date, $visibility, $author_id, $category_id)
+    public static function update_post($id, $title, $text, $short_text, $date, $visibility, $author_id, $category_id): void
     {
         $post = self::find_by_id($id);
         $post->title = $title;
@@ -72,7 +73,7 @@ class Posts extends Model
         $post->save();
     }
 
-    public static function find_posts_by_category($category_id)
+    public static function find_posts_by_category($category_id): ?array
     {
         $rows = self::find_by_condition(['category_id' => $category_id]);
         if (!empty($rows)) {

@@ -1,7 +1,6 @@
 <?php
 $this->title = 'Профіль користувача';
 
-use Models\Users;
 use Core\Core;
 
 $current_user = Core::get()->session->get('user');
@@ -10,9 +9,9 @@ $current_user = Core::get()->session->get('user');
 
 <div class="container">
     <form method="post" action="">
-        <?php if (!empty($error_massage)) : ?>
+        <?php if (!empty($error_message)) : ?>
             <div class="alert alert-danger" role="alert">
-                <?= $error_massage ?>
+                <?= $error_message ?>
             </div>
         <?php endif ?>
         <div class="mb-3">

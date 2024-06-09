@@ -10,6 +10,9 @@ $posts = Posts::find_all_posts();
 <div class="container">
     <div class="row justify-content-center">
         <?php foreach ($posts as $post) : ?>
+            <?php if (!Users::is_admin() && !Users::is_publisher() && $post->visibility == 0) 
+                continue;  
+            ?>    
             <div class="col-6 col-md-5 col-lg-4 col-xl-3 mb-4">
                 <div class="card h-100">
 

@@ -5,7 +5,7 @@ namespace Core;
 class Controller
 {
     protected Template $template;
-    protected $error_massages;
+    protected $error_messages;
     public $is_post = false;
     public $is_get = false;
     public $post;
@@ -27,7 +27,7 @@ class Controller
         }
         $this->post = new Post();
         $this->get = new Get();
-        $this->error_massages = [];
+        $this->error_messages = [];
     }
 
     public function render($path_to_view = null): array
@@ -53,18 +53,18 @@ class Controller
 
     public function add_error_message($message = null): void
     {
-        $this->error_massages[] = $message;
-        $this->template->set_param('error_massage', implode('<br/>', $this->error_massages));
+        $this->error_messages[] = $message;
+        $this->template->set_param('error_message', implode('<br/>', $this->error_messages));
     }
 
     public function clear_error_message(): void
     {
-        $this->$this->error_massages = [];
-        $this->template->set_param('error_massage', null);
+        $this->$this->error_messages = [];
+        $this->template->set_param('error_message', null);
     }
 
-    public function is_error_massage_exist(): bool
+    public function is_error_message_exist(): bool
     {
-        return count($this->error_massages) > 0;
+        return count($this->error_messages) > 0;
     }
 }

@@ -2,7 +2,6 @@
 
 namespace Models;
 
-use Core\Core;
 use Core\Model;
 
 /**
@@ -26,7 +25,7 @@ class Category extends Model
         return $photo_name;
     }
 
-    public static function change_photo($id, $new_photo)
+    public static function change_photo($id, $new_photo): string
     {
         $category = self::find_by_id($id);
         $photo_path = 'Uploads\\Category\\' . $category['photo'];
@@ -34,11 +33,10 @@ class Category extends Model
             unlink($photo_path);
         }
 
-        $photo_name = self::photo_path($new_photo);
-        return $photo_name;
+        return self::photo_path($new_photo);
     }
 
-    public static function add_category($name, $photo, $description = null)
+    public static function add_category($name, $photo, $description = null): void
     {
 
         $photo_name = self::photo_path($photo);
@@ -60,7 +58,7 @@ class Category extends Model
         }
     }
 
-    public static function find_all_categories()
+    public static function find_all_categories(): array
     {
         $rows = self::find_all();
         $category = [];
@@ -70,13 +68,13 @@ class Category extends Model
         return $category;
     }
 
-    public static function delete_category($id)
+    public static function delete_category($id): void
     {
         self::delete_by_id($id);
         
     }
 
-    public static function update_category($id, $name, $photo = null, $description = null)
+    public static function update_category($id, $name, $photo = null, $description = null): void
     {
         $category = self::find_category_by_id($id);
         $category->name = $name;

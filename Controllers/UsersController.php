@@ -57,7 +57,7 @@ class UsersController extends Controller
             if (strlen($lastname) === 0) {
                 $this->add_error_message('Введіть прізвище');
             }
-            if (!$this->is_error_massage_exist()) {
+            if (!$this->is_error_message_exist()) {
                 Users::register_user(
                     $this->post->login,
                     Users::hash_password($this->post->password),
@@ -100,7 +100,7 @@ class UsersController extends Controller
         return $this->render();
     }
 
-    public function action_profile()
+    public function action_profile(): ?array
     {
         if (!Users::is_user_logged()) {
             return $this->redirect('/users/login');
@@ -124,7 +124,7 @@ class UsersController extends Controller
             else {
                 $password = Users::hash_password($this->post->password);
             }
-            if (!$this->is_error_massage_exist()) {
+            if (!$this->is_error_message_exist()) {
                 Users::update_user(
                     Core::get()->session->get('user')->id,
                     $this->post->login,

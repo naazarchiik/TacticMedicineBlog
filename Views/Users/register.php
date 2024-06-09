@@ -1,14 +1,14 @@
 <?php
 
-/** @var string $error_massage Повідомлення про помилку */
+/** @var string $error_message Повідомлення про помилку */
 $this->title = "Реєстрація користувача";
 ?>
 <div class="container">
     <form method="post" action="">
     <div class="form-text text-info text-end">* Обов'язкові поля</div>
-        <?php if (!empty($error_massage)) : ?>
+        <?php if (!empty($error_message)) : ?>
             <div class="alert alert-danger" role="alert">
-                <?= $error_massage ?>
+                <?= $error_message ?>
             </div>
         <?php endif ?>
         <div class="mb-3">

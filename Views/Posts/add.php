@@ -1,7 +1,7 @@
 <?php
 
 /** 
- * @var string $error_massage Повідомлення про помилку 
+ * @var string $error_message Повідомлення про помилку
  * @var int/null $category_id ID категорії
  * */
 use Models\Category;
@@ -19,9 +19,9 @@ $this->title = "Додавання посту до блогу";
 <div class="container">
     <form method="post" action="" enctype="multipart/form-data">
     <div class="form-text text-info text-end">* Обов'язкові поля</div>
-        <?php if (!empty($error_massage)) : ?>
+        <?php if (!empty($error_message)) : ?>
             <div class="alert alert-danger" role="alert">
-                <?= $error_massage ?>
+                <?= $error_message ?>
             </div>
         <?php endif ?>
         <div class="mb-3">
@@ -30,7 +30,7 @@ $this->title = "Додавання посту до блогу";
         </div>
         <div class="input-group mb-3">
             <label for="category_id" class="input-group-text">Оберіть категорію посту</label>
-            <select class="form-select" id="category_id" name="category_id" placeholder="Категорія" required>
+            <select class="form-select" id="category_id" name="category_id" required>
             <?php foreach ($categories as $category) : ?>
                 <option <?php if($category->id == $category_id) echo 'selected'; ?> value="<?= $category->id ?>"><?= $category->name ?></option>
             <?php endforeach; ?>    
@@ -42,7 +42,7 @@ $this->title = "Додавання посту до блогу";
         </div>
         <div class="mb-3">
             <label for="text" class="form-label">Текст посту *</label>
-            <textarea class=editor form-control" id="text" name="text" rows="3" placeholder="Текст" required></textarea>
+            <textarea class="editor form-control" id="text" name="text" rows="3" placeholder="Текст" required></textarea>
         </div>
         <div class="mb-3">
             <label for="formFile" class="form-label">Оберіть фото для посту</label>
@@ -51,7 +51,7 @@ $this->title = "Додавання посту до блогу";
         </div>
         <div class="input-group mb-3">
             <label for="visibility" class="input-group-text">Видимість посту</label>
-            <select class="form-select" id="visibility" name="visibility" placeholder="Категорія" required>
+            <select class="form-select" id="visibility" name="visibility" required>
                 <option value="1">Так</option>
                 <option value="0">Ні</option>
             </select>

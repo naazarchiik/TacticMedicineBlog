@@ -1,6 +1,6 @@
 <?php
 
-/** @var string $error_massage Повідомлення про помилку */
+/** @var string $error_message Повідомлення про помилку */
 $this->title = "Редагування категорії";
 
 use Models\Category;
@@ -9,9 +9,9 @@ $category = Category::find_category_by_id($id);
 ?>
 <div class="container">
     <form method="post" action="" enctype="multipart/form-data">
-        <?php if (!empty($error_massage)) : ?>
+        <?php if (!empty($error_message)) : ?>
             <div class="alert alert-danger" role="alert">
-                <?= $error_massage ?>
+                <?= $error_message ?>
             </div>
         <?php endif ?>
         <div class="mb-3">

@@ -14,7 +14,7 @@ class CategoryController extends Controller
         return $this->render();
     }
 
-    public function action_view($params)
+    public function action_view($params): ?array
     {
         $id = intval($params[0]);
         $this->template->set_param('id', $id);
@@ -53,7 +53,7 @@ class CategoryController extends Controller
                 $this->add_error_message('Файл повинен бути зображенням у форматі jpeg');
             }
 
-            if (!$this->is_error_massage_exist()) {
+            if (!$this->is_error_message_exist()) {
                 Category::add_category(
                     $this->post->name,
                     $_FILES['file']['tmp_name'],
@@ -67,7 +67,7 @@ class CategoryController extends Controller
         return $this->render();
     }
 
-    public function action_edit($id)
+    public function action_edit($id): ?array
     {
         $id = intval($id[0]);
         $this->template->set_param('id', $id);
@@ -96,7 +96,7 @@ class CategoryController extends Controller
                 $this->add_error_message('Файл повинен бути зображенням у форматі jpeg');
             }
 
-            if (!$this->is_error_massage_exist()) {
+            if (!$this->is_error_message_exist()) {
                 Category::update_category(
                     $id,
                     $this->post->name,
@@ -111,7 +111,8 @@ class CategoryController extends Controller
         return $this->render();
     }
 
-    public function action_delete($params){
+    public function action_delete($params): ?array
+    {
         $id = intval($params[0]);
         if(!empty($params[1])) {
             $yes = $params[1] == 'yes';

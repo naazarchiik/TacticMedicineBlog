@@ -2,7 +2,6 @@
 
 namespace Controllers;
 
-use Core\Template;
 use Core\Controller;
 
 class SiteController extends Controller

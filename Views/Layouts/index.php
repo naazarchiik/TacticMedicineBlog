@@ -51,8 +51,10 @@ if (empty($content)) {
                                 Account
                             </button>
                             <ul class="dropdown-menu dropdown-menu-dark">
-                                <li><a class="dropdown-item" href="#">New project...</a></li>
-                                <li><a class="dropdown-item" href="#">Settings</a></li>
+                                <?php if (Users::is_admin() || Users::is_publisher()) : ?>
+                                    <li><a class="dropdown-item" href="/posts/add">New post...</a></li>
+                                    <li><a class="dropdown-item" href="/category/add">New category...</a></li>
+                                <?php endif; ?>
                                 <li><a class="dropdown-item" href="/users/profile">Profile</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
