@@ -99,4 +99,42 @@ class UsersController extends Controller
 
         return $this->render();
     }
+
+    public function action_profile()
+    {
+        if (!Users::is_user_logged()) {
+            return $this->redirect('/users/login');
+        }
+        if ($this->is_post) {
+            if (strlen($this->post->login) === 0) {
+                $this->add_error_message('Введіть логін');
+            }
+            if (strlen($this->post->firstname) === 0) {
+                $this->add_error_message('Введіть ім\'я');
+            }
+            if (strlen($this->post->lastname) === 0) {
+                $this->add_error_message('Введіть прізвище');
+            }
+            if (strlen($this->post->password) === 0) {
+               $password = Core::get()->session->get('user')->password;
+            }
+            elseif ($this->post->password != $this->post->password2) {
+                $this->add_error_message('Паролі не співпадають');
+            }
+            else {
+                $password = Users::hash_password($this->post->password);
+            }
+            if (!$this->is_error_massage_exist()) {
+                Users::update_user(
+                    Core::get()->session->get('user')->id,
+                    $this->post->login,
+                    $password,
+                    $this->post->firstname,
+                    $this->post->lastname
+                );
+                return $this->redirect('/');
+            }
+        }
+        return $this->render();
+    }
 }

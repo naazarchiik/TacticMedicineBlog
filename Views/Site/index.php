@@ -2,9 +2,24 @@
 $this->title = 'Головна сторінка';
 ?>
 
-<body>
-    <h1>Головна сторінка</h1>
-    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia similique blanditiis laborum dolorem illo accusantium voluptatibus beatae veritatis, iste adipisci cumque fugiat et dolores? Officia earum animi reprehenderit quasi eius?
-    Tempora nam voluptates nisi? Corporis asperiores dicta mollitia, officia aspernatur cum ad at doloremque nulla earum doloribus fugiat magnam vero neque iure sunt, natus officiis esse eaque deserunt repellat dolorum.
-    Doloribus laboriosam natus soluta officiis in quidem odit, qui tenetur eius, enim atque deserunt vitae blanditiis perspiciatis? Quia incidunt nulla provident eum pariatur vero deserunt rerum, minus quo in ipsa?
-</body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+           <img src="/uploads/main/index.jpg" alt="TCCC" class="img-fluid">
+        </div>
+        <div class="col-md-6">
+             <h1>Tactical Combat Casualty Care - TCCC</h1>
+            <p>
+                Курс TCCC (Tactical Combat Casualty Care) - це спеціалізована медична програма, розроблена для підготовки військових, яка зосереджується на наданні допомоги пораненим в полі бою. Слово "Тактичний" у назві вказує на те, що курс зосереджений на навчанні медичної допомоги в умовах ведення бойових дій.
+                TCCC було вперше розроблено в США у 90-ті роки як відповідь на потребу в підвищенні рівня медичної підготовки військовослужбовців. Згодом, цей курс було прийнято як стандарт медичного навчання в арміях багатьох країн світу.
+            </p>
+            <h2>
+                <p>TCCC українською мовою</p>
+            </h2>
+            <p>
+                З радістю повідомляємо важливу новину для української військової та медичної спільноти: відтепер офіційні курси TCCC (Tactical Combat Casualty Care) доступні українською мовою. Це стало можливим завдяки офіційному дозволу від організації "Deployed Medicine", що є одним із визнаних світових лідерів у сфері медичної підготовки військових.
+                Поряд з практичною значимістю для розширення доступу до високоякісного медичного навчання в Україні, цей крок також відображає посилення міжнародної співпраці та визнання значимості українського військового внеску в миротворчі та оборонні зусилля. Він демонструє підтримку з боку міжнародної спільноти та сприяє розвитку інфраструктури військової медицини в Україні.
+            </p>
+        </div>
+    </div>
+</div>
