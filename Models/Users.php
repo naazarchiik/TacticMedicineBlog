@@ -76,8 +76,8 @@ class Users extends Model
         $user->password = $password;
         $user->firstname = $firstname;
         $user->lastname = $lastname;
-        $user->is_admin = false;
-        $user->is_publisher = false;
+        $user->is_admin = 0;
+        $user->is_publisher = 0;
         $user->save();
     }
 

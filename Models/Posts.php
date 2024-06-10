@@ -81,24 +81,24 @@ class Posts extends Model
         $posts->save();
     }
 
-    public static function delete_posts($id): void
+    public static function delete_post($id): void
     {
         self::delete_by_id($id);
     }
 
-    public static function update_post($id, $title, $text, $short_text, $date, $visibility, $photo, $author_id, $category_id): void
+    public static function update_post($id, $title, $text, $date, $visibility, $category_id, $author_id, $short_text = null, $photo = null): void
     {
         $post = self::find_post_by_id($id);
         $post->title = $title;
         $post->text = $text;
-        $post->short_text = $short_text;
         $post->date = $date;
         $post->visibility = $visibility;
+        $post->author_id = $author_id;
+        $post->category_id = $category_id;
+        $post->short_text = $short_text;
         if (!empty($photo)) {
             $post->photo = self::change_photo($id, $photo);
         }
-        $post->author_id = $author_id;
-        $post->category_id = $category_id;
         $post->save();
     }
 

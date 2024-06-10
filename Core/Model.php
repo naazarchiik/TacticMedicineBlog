@@ -66,7 +66,7 @@ class Model
     public function save(): void
     {
         $is_insert = false;
-        if (!isset($this->{static::$primary_key}) || $this->{static::$primary_key} === null) {
+        if ( $this->{static::$primary_key} === null) {
             $is_insert = true;
         } else {
             $value = $this->{static::$primary_key};

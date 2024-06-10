@@ -74,17 +74,16 @@ class Category extends Model
     public static function delete_category($id): void
     {
         self::delete_by_id($id);
-        
     }
 
-    public static function update_category($id, $name, $photo = null, $description = null): void
+    public static function update_category($id, $name, $description = null, $photo = null): void
     {
         $category = self::find_category_by_id($id);
         $category->name = $name;
+        $category->description = $description;
         if (!empty($photo)) {
             $category->photo = self::change_photo($id, $photo);
         }
-        $category->description = $description;
         $category->save();
     }
 }
