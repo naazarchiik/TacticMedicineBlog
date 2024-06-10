@@ -19,7 +19,7 @@ class Category extends Model
     {
         do {
             $photo_name = uniqid() . '.jpg';
-            $path = 'Uploads\\Category\\' . $photo_name;
+            $path = 'Uploads/Category/' . $photo_name;
         } while (file_exists($path));
         move_uploaded_file($photo, $path);
         return $photo_name;
@@ -28,7 +28,7 @@ class Category extends Model
     public static function change_photo($id, $new_photo): string
     {
         $category = self::find_by_id($id);
-        $photo_path = 'Uploads\\Category\\' . $category['photo'];
+        $photo_path = 'Uploads/Category/' . $category['photo'];
         if (is_file($photo_path)) {
             unlink($photo_path);
         }
@@ -61,11 +61,14 @@ class Category extends Model
     public static function find_all_categories(): array
     {
         $rows = self::find_all();
-        $category = [];
-        foreach ($rows as $row) {
-            $category[] = self::array_to_object($row, self::class);
+        if  (!empty($rows)) {
+            foreach ($rows as $row) {
+                $categories[] = self::array_to_object($row, self::class);
+            }
+            return $categories;
+        } else {
+            return [];
         }
-        return $category;
     }
 
     public static function delete_category($id): void

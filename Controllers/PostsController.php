@@ -57,31 +57,45 @@ class PostsController extends Controller
         }
         $this->template->set_param('category_id', $category_id);
 
+       
 
-        $user = Core::get()->session->get('user');
-        $user_id = $user->id;
+        if ($this->is_post) { 
+            
+            $maxSize = 8 * 1024 * 1024;
+            $file = $_FILES['file'];
 
-        if ($this->is_post) {
+            $user = Core::get()->session->get('user');
+            $user_id = $user->id;
 
             if (strlen($this->post->title) === 0) {
                 $this->add_error_message('Введіть заголовок посту');
             }
-            if (strlen($this->post->title) === 0) {
+            if (strlen($this->post->post_text) === 0) {
                 $this->add_error_message('Введіть текст посту');
             }
-            if (empty($this->post->category_id)) {
+            if (!$this->post->category_id === null) {
                 $this->add_error_message('Виберіть категорію');
             }
-            if (empty($this->post->visibility)) {
+            if (!$this->post->visibility === null) {
                 $this->add_error_message('Виберіть видимість посту');
+            }
+            if ($file['size'] > $maxSize) {
+                $this->add_error_message('Файл перевищує максимальний розмір у 8MB');
+            }
+            if ($file['error'] !== UPLOAD_ERR_OK) {
+                $this->add_error_message('Виникла помилка при завантаженні файлу');
+            }
+            if ($file['type'] !== 'image/jpeg') {
+                $this->add_error_message('Файл повинен бути зображенням у форматі jpeg');
             }
 
             if (!$this->is_error_message_exist()) {
                 Posts::add_post(
                     $this->post->title,
-                    $this->post->text,
+                    $this->post->post_text,
                     date('Y-m-d H:i:s'),
                     intval($this->post->visibility),
+                    $_FILES['file']['tmp_name'],
                     $user_id,
                     intval($this->post->category_id),
                     $this->post->short_text

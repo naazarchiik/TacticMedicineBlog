@@ -24,6 +24,6 @@ $this->title = "Створення категорії";
             <input class="form-control" type="file" name="file" id="formFile" accept="image/jpeg" required>
             <small id="fileHelp" class="form-text text-muted">Максимальний розмір файлу: 8MB</small>
         </div>
-        <div class="d-flex justify-content-center"><button type="submit" class="btn btn-primary px-3 mx-3">Створити</button></div>
+        <div class="d-flex justify-content-center"><button type="submit" class="btn btn-secondary px-3 mx-3">Створити</button></div>
     </form>
 </div>

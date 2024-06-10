@@ -23,20 +23,18 @@ if ($comments === null) {
 </style>
 <div class="container">
     <div class="row">
-        <div class="col-12"></div>
-        <?php $file_path = 'Uploads/Category/' ?>
+        <?php $file_path = 'Uploads/Posts/' . $post->photo ?>
         <?php if (is_file($file_path)) : ?>
-            <img src="/<?= $file_path ?>" class="img-thumbnail" alt="Category_Photo" height="315" width="1024">
+            <img src="/<?= $file_path ?>" class="img-fluid" alt="Category_Photo" height="315" width="1024">
         <?php else : ?>
-            <img src="/Uploads/Category/665f895c5dfd7.jpg" class="" alt="Category_Photo" height="315" width="1024">
+            <img src="/Uploads/Category/default.jpeg" class="" alt="Category_Photo" height="315" width="1024">
         <?php endif; ?>
     </div>
-    <h1 class="h1 mb-3"><?= $post->title ?></h1>
+    <h1 class="h1 my-3 fw-bold"><?= $post->title ?></h1>
     <p class="fw-medium">Дата публікації: <?= $post->date ?></p>
+
     <div class="post-content">
         <?= $post->text ?>
-    </div>
-    <div class="post-content">
     </div>
 
     <div class="border-bottom py-2 mt-5">
@@ -67,7 +65,7 @@ if ($comments === null) {
                     <label for="text">Коментар</label>
                     <textarea class="form-control" id="text" name="text" rows="4" required></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary mt-3">Відправити</button>
+                <button type="submit" class="btn btn-secondary mt-3">Відправити</button>
             </form>
         </div>
     <?php else : ?>

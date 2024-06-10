@@ -37,6 +37,6 @@ $category = Category::find_category_by_id($id);
             <input class="form-control" type="file" name="file" id="formFile" accept="image/jpeg">
             <small id="fileHelp" class="form-text text-muted">Максимальний розмір файлу: 8MB</small>
         </div>
-        <div class="d-flex justify-content-center"><button type="submit" class="btn btn-primary px-3 mx-3">Зберегти</button></div>
+        <div class="d-flex justify-content-center"><button type="submit" class="btn btn-secondary px-3 mx-3">Зберегти</button></div>
     </form>
 </div>

@@ -34,7 +34,7 @@ $current_user = Core::get()->session->get('user');
             <label for="inputFirstname" class="form-label">Ім'я</label>
             <input value="<?= $current_user->firstname ?>" name="firstname" type="text" class="form-control" id="inputFirstname">
         </div>
-        <div class="d-flex justify-content-center"><button type="submit" class="btn btn-primary px-3 mx-3">Підтвердити</button></div>
+        <div class="d-flex justify-content-center"><button type="submit" class="btn btn-secondary px-3 mx-3">Підтвердити</button></div>
         <div class="d-flex justify-content-center m-4 mb-0"> <a class="link-underline-primary" href="/">Повернутись на головну</a></div>
     </form>
 </div>
